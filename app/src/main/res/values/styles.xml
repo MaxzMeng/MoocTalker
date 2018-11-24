@@ -31,4 +31,6 @@
         <item name="android:textSize">?attr/toolbarTitleSize</item>
         <item name="android:textColor">?attr/toolbarTitleColor</item>
     </style>
+
+    <style name="AppTheme.Account" parent="AppTheme.TransStatusBar" />
 </resources>

@@ -23,6 +23,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import me.maxandroid.common.app.Activity;
 import me.maxandroid.common.widget.PortraitView;
+import me.maxandroid.italker.activities.AccountActivity;
 import me.maxandroid.italker.frags.main.ActiveFragment;
 import me.maxandroid.italker.frags.main.ContactFragment;
 import me.maxandroid.italker.frags.main.GroupFragment;
@@ -87,7 +88,7 @@ public class MainActivity extends Activity implements BottomNavigationView.OnNav
 
     @OnClick(R.id.btn_action)
     void onActionClick() {
-
+        AccountActivity.show(this);
     }
 
     @Override
