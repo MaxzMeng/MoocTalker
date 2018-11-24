@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 
-import me.maxandroid.common.app.Activity;
-import me.maxandroid.common.app.Fragment;
+import me.maxandroid.italker.common.app.Activity;
+import me.maxandroid.italker.common.app.Fragment;
 import me.maxandroid.italker.R;
 import me.maxandroid.italker.frags.account.UpdateInfoFragment;
 

@@ -14,8 +14,8 @@ import android.view.Window;
 
 import net.qiujuer.genius.ui.Ui;
 
-import me.maxandroid.common.tools.UiTool;
-import me.maxandroid.common.widget.GalleryView;
+import me.maxandroid.italker.common.tools.UiTool;
+import me.maxandroid.italker.common.widget.GalleryView;
 import me.maxandroid.italker.R;
 
 
@@ -69,7 +69,7 @@ public class GalleryFragment extends BottomSheetDialogFragment
     }
 
 
-    private static class TransStatusBottomSheetDialog extends BottomSheetDialog {
+    public static class TransStatusBottomSheetDialog extends BottomSheetDialog {
 
         public TransStatusBottomSheetDialog(@NonNull Context context) {
             super(context);

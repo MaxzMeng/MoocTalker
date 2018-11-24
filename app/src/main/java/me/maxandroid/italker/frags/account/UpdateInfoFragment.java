@@ -4,6 +4,7 @@ package me.maxandroid.italker.frags.account;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.util.Log;
 import android.view.View;
 
 import com.bumptech.glide.Glide;
@@ -13,10 +14,12 @@ import java.io.File;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import me.maxandroid.common.app.Application;
-import me.maxandroid.common.app.Fragment;
-import me.maxandroid.common.widget.PortraitView;
 import me.maxandroid.italker.R;
+import me.maxandroid.italker.common.app.Application;
+import me.maxandroid.italker.common.app.Fragment;
+import me.maxandroid.italker.common.widget.PortraitView;
+import me.maxandroid.italker.factory.Factory;
+import me.maxandroid.italker.factory.net.UploadHelper;
 import me.maxandroid.italker.frags.media.GalleryFragment;
 
 import static android.app.Activity.RESULT_OK;
@@ -76,5 +79,14 @@ public class UpdateInfoFragment extends Fragment {
                 .asBitmap()
                 .centerCrop()
                 .into(mPortrait);
+
+        final String localPath = uri.getPath();
+        Log.e("TAG", "localPath: " + localPath);
+        Factory.runOnAsync(new Runnable() {
+            @Override
+            public void run() {
+                UploadHelper.uploadPortrait(localPath);
+            }
+        });
     }
 }
