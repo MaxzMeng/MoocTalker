@@ -54,7 +54,7 @@ public abstract class Activity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        List<android.support.v4.app.Fragment> fragments = getSupportFragmentManager().getFragments();
+        List<Fragment> fragments = getSupportFragmentManager().getFragments();
         if (fragments.size() > 0) {
             for (Fragment fragment : fragments) {
                 if (fragment instanceof me.maxandroid.common.app.Fragment) {

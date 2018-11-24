@@ -1,7 +1,6 @@
 package me.maxandroid.common.widget.recycler;
 
 import android.support.annotation.LayoutRes;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
