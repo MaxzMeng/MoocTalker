@@ -26,10 +26,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activities.LaunchActivity">
+        <activity
+            android:name=".activities.LaunchActivity"
+            android:theme="@style/AppTheme.TransStatusBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -43,7 +44,19 @@
         <activity
             android:name=".activities.AccountActivity"
             android:theme="@style/AppTheme.Account" />
-        <activity android:name=".activities.UserActivity"></activity>
+        <activity
+            android:name=".activities.UserActivity"
+            android:theme="@style/AppTheme" />
+
+        <!--<receiver-->
+            <!--android:name=".MessageReceiver"-->
+            <!--android:enabled="true"-->
+            <!--android:exported="true"-->
+            <!--android:permission="1000">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="com.igexin.sdk.action.${GETUI_APP_ID}" />-->
+            <!--</intent-filter>-->
+        <!--</receiver>-->
     </application>
 
 </manifest>

@@ -8,6 +8,12 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders = [
+                GETUI_APP_ID    : "sxjLlJy9Lu5lfVuya7c6q",
+                GETUI_APP_KEY   : "jrFICYYfbt9YUHil5QTaY7",
+                GETUI_APP_SECRET: "ce4pbrF7eL9UjaDAzIy52A",
+                PACKAGE_NAME    : applicationId
+        ]
     }
     buildTypes {
         release {
@@ -31,4 +37,5 @@ dependencies {
 
     api "com.yalantis:ucrop:$rootProject.ext.ucropVersion"
     api "pub.devrel:easypermissions:$rootProject.ext.easyPMVersion"
+    api "com.getui:sdk:$rootProject.ext.getuiVersion"
 }

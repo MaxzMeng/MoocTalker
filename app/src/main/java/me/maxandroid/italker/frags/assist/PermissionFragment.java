@@ -16,8 +16,9 @@ import java.util.List;
 
 import me.maxandroid.italker.MainActivity;
 import me.maxandroid.italker.R;
-import me.maxandroid.italker.activities.LaunchActivity;
+import me.maxandroid.italker.activities.AccountActivity;
 import me.maxandroid.italker.common.app.Application;
+import me.maxandroid.italker.factory.persistence.Account;
 import me.maxandroid.italker.frags.media.GalleryFragment;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.AppSettingsDialog;
@@ -38,6 +39,7 @@ public class PermissionFragment extends BottomSheetDialogFragment
         // 复用即可
         dialog = new GalleryFragment.TransStatusBottomSheetDialog(getContext());
         dialog.setCancelable(false);
+        dialog.setCanceledOnTouchOutside(false);
         return dialog;
     }
 
@@ -214,10 +216,11 @@ public class PermissionFragment extends BottomSheetDialogFragment
     @Override
     public void onPermissionsGranted(int requestCode, List<String> perms) {
         dialog.dismiss();
-//        if (getActivity() instanceof LaunchActivity) {
-//            MainActivity.show(getActivity());
-//            getActivity().finish();
-//        }
+        if (Account.isLogin()) {
+            MainActivity.show(getContext());
+        } else {
+            AccountActivity.show(getContext());
+        }
     }
 
     @Override
