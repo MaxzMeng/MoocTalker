@@ -2,6 +2,7 @@ package me.maxandroid.italker;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.view.Menu;
@@ -24,9 +25,10 @@ import java.util.Objects;
 import butterknife.BindView;
 import butterknife.OnClick;
 import me.maxandroid.italker.activities.AccountActivity;
+import me.maxandroid.italker.activities.UserActivity;
 import me.maxandroid.italker.common.app.Activity;
 import me.maxandroid.italker.common.widget.PortraitView;
-import me.maxandroid.italker.frags.assist.PermissionFragment;
+import me.maxandroid.italker.factory.persistence.Account;
 import me.maxandroid.italker.frags.main.ActiveFragment;
 import me.maxandroid.italker.frags.main.ContactFragment;
 import me.maxandroid.italker.frags.main.GroupFragment;
@@ -55,6 +57,16 @@ public class MainActivity extends Activity implements BottomNavigationView.OnNav
 
     public static void show(Context context) {
         context.startActivity(new Intent(context, MainActivity.class));
+    }
+
+    @Override
+    protected boolean initArgs(Bundle bundle) {
+        if (Account.isComplete()) {
+            return super.initArgs(bundle);
+        } else {
+            UserActivity.show(this);
+            return false;
+        }
     }
 
     @Override

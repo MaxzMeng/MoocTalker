@@ -71,8 +71,13 @@ public class Account {
     }
 
     public static boolean isComplete() {
-        // TODO
-        return isLogin();
+        if (isLogin()) {
+            User self = getUser();
+            return !TextUtils.isEmpty(self.getDesc())
+                    && !TextUtils.isEmpty(self.getPortrait())
+                    && self.getSex() != 0;
+        }
+        return false;
     }
 
     public static boolean isBind() {
