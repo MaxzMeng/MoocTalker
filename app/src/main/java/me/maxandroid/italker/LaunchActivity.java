@@ -1,4 +1,4 @@
-package me.maxandroid.italker.activities;
+package me.maxandroid.italker;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -13,8 +13,8 @@ import android.view.View;
 import net.qiujuer.genius.res.Resource;
 import net.qiujuer.genius.ui.compat.UiCompat;
 
-import me.maxandroid.italker.MainActivity;
-import me.maxandroid.italker.R;
+import me.maxandroid.italker.activities.AccountActivity;
+import me.maxandroid.italker.activities.MainActivity;
 import me.maxandroid.italker.common.app.Activity;
 import me.maxandroid.italker.factory.persistence.Account;
 import me.maxandroid.italker.frags.assist.PermissionFragment;
@@ -85,7 +85,6 @@ public class LaunchActivity extends Activity {
             } else {
                 AccountActivity.show(this);
             }
-
             finish();
         }
     }

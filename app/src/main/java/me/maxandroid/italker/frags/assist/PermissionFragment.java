@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-import me.maxandroid.italker.MainActivity;
+import me.maxandroid.italker.activities.MainActivity;
 import me.maxandroid.italker.R;
 import me.maxandroid.italker.activities.AccountActivity;
 import me.maxandroid.italker.common.app.Application;
@@ -221,6 +221,7 @@ public class PermissionFragment extends BottomSheetDialogFragment
         } else {
             AccountActivity.show(getContext());
         }
+        getActivity().finish();
     }
 
     @Override

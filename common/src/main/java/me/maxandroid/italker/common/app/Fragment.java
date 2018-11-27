@@ -11,10 +11,12 @@ import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import me.maxandroid.italker.common.widget.convention.PlaceHolderView;
 
 public abstract class Fragment extends android.support.v4.app.Fragment {
     protected View mRoot;
     protected Unbinder mRootUnBinder;
+    protected PlaceHolderView mPlaceHolderView;
 
     @Override
     public void onAttach(Context context) {
@@ -66,5 +68,9 @@ public abstract class Fragment extends android.support.v4.app.Fragment {
     public boolean onBackPressed() {
 
         return false;
+    }
+
+    public void setPlaceHolderView(PlaceHolderView placeHolderView) {
+        this.mPlaceHolderView = placeHolderView;
     }
 }

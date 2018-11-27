@@ -1,4 +1,4 @@
-package me.maxandroid.italker;
+package me.maxandroid.italker.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -24,8 +24,7 @@ import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import me.maxandroid.italker.activities.AccountActivity;
-import me.maxandroid.italker.activities.UserActivity;
+import me.maxandroid.italker.R;
 import me.maxandroid.italker.common.app.Activity;
 import me.maxandroid.italker.common.widget.PortraitView;
 import me.maxandroid.italker.factory.persistence.Account;
@@ -102,12 +101,18 @@ public class MainActivity extends Activity implements BottomNavigationView.OnNav
 
     @OnClick(R.id.im_search)
     void onSearchMenuClick() {
-
+        int type = Objects.equals(mNavHelper.getCurrentTab().extra, R.string.title_group) ?
+                SearchActivity.TYPE_GROUP : SearchActivity.TYPE_USER;
+        SearchActivity.show(this, type);
     }
 
     @OnClick(R.id.btn_action)
     void onActionClick() {
-        AccountActivity.show(this);
+        if (Objects.equals(mNavHelper.getCurrentTab().extra, R.string.title_group)) {
+            // TODO 打开群创建界面
+        } else {
+            SearchActivity.show(this, SearchActivity.TYPE_USER);
+        }
     }
 
     @Override
