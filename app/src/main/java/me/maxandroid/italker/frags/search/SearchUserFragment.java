@@ -19,6 +19,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 import me.maxandroid.italker.R;
+import me.maxandroid.italker.activities.PersonalActivity;
 import me.maxandroid.italker.activities.SearchActivity;
 import me.maxandroid.italker.common.app.PresenterFragment;
 import me.maxandroid.italker.common.widget.EmptyView;
@@ -33,6 +34,7 @@ import me.maxandroid.italker.factory.presenter.search.SearchUserPresenter;
 
 public class SearchUserFragment extends PresenterFragment<SearchContract.Presenter>
         implements SearchActivity.SearchFragment, SearchContract.UserView {
+
     @BindView(R.id.empty)
     EmptyView mEmptyView;
 
@@ -79,14 +81,14 @@ public class SearchUserFragment extends PresenterFragment<SearchContract.Present
     }
 
     @Override
-    protected SearchContract.Presenter initPresenter() {
-        return new SearchUserPresenter(this);
-    }
-
-    @Override
     public void onSearchDone(List<UserCard> userCards) {
         mAdapter.replace(userCards);
         mPlaceHolderView.triggerOkOrEmpty(mAdapter.getItemCount() > 0);
+    }
+
+    @Override
+    protected SearchContract.Presenter initPresenter() {
+        return new SearchUserPresenter(this);
     }
 
     class ViewHolder extends RecyclerAdapter.ViewHolder<UserCard>
@@ -102,6 +104,7 @@ public class SearchUserFragment extends PresenterFragment<SearchContract.Present
 
         private FollowContract.Presenter mPresenter;
 
+
         public ViewHolder(View itemView) {
             super(itemView);
             new FollowPresenter(this);
@@ -109,26 +112,24 @@ public class SearchUserFragment extends PresenterFragment<SearchContract.Present
 
         @Override
         protected void onBind(UserCard userCard) {
-            Glide.with(SearchUserFragment.this)
-                    .load(userCard.getPortrait())
-                    .centerCrop()
-                    .into(mPortraitView);
-
+            mPortraitView.setup(Glide.with(SearchUserFragment.this), userCard);
             mName.setText(userCard.getName());
             mFollow.setEnabled(!userCard.isFollow());
         }
 
+        @OnClick(R.id.im_portrait)
+        void onPortraitClick() {
+            PersonalActivity.show(getContext(), mData.getId());
+        }
+
         @OnClick(R.id.im_follow)
         void onFollowClick() {
-            // 发起关注
             mPresenter.follow(mData.getId());
         }
 
         @Override
         public void showError(int str) {
-            // 更改当前界面状态
             if (mFollow.getDrawable() instanceof LoadingDrawable) {
-                // 失败则停止动画，并且显示一个圆圈
                 LoadingDrawable drawable = (LoadingDrawable) mFollow.getDrawable();
                 drawable.setProgress(1);
                 drawable.stop();
@@ -139,15 +140,12 @@ public class SearchUserFragment extends PresenterFragment<SearchContract.Present
         public void showLoading() {
             int minSize = (int) Ui.dipToPx(getResources(), 22);
             int maxSize = (int) Ui.dipToPx(getResources(), 30);
-            // 初始化一个圆形的动画的Drawable
             LoadingDrawable drawable = new LoadingCircleDrawable(minSize, maxSize);
             drawable.setBackgroundColor(0);
 
             int[] color = new int[]{UiCompat.getColor(getResources(), R.color.white_alpha_208)};
             drawable.setForegroundColor(color);
-            // 设置进去
             mFollow.setImageDrawable(drawable);
-            // 启动动画
             drawable.start();
         }
 
@@ -158,13 +156,10 @@ public class SearchUserFragment extends PresenterFragment<SearchContract.Present
 
         @Override
         public void onFollowSucceed(UserCard userCard) {
-            // 更改当前界面状态
             if (mFollow.getDrawable() instanceof LoadingDrawable) {
                 ((LoadingDrawable) mFollow.getDrawable()).stop();
-                // 设置为默认的
                 mFollow.setImageResource(R.drawable.sel_opt_done_add);
             }
-            // 发起更新
             updateData(userCard);
         }
     }

@@ -2,9 +2,10 @@ package me.maxandroid.italker.factory.model.card;
 
 import java.util.Date;
 
+import me.maxandroid.italker.factory.model.Author;
 import me.maxandroid.italker.factory.model.db.User;
 
-public class UserCard {
+public class UserCard implements Author {
     private String id;
     private String name;
     private String phone;

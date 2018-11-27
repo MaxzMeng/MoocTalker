@@ -3,7 +3,6 @@ package me.maxandroid.italker.common.app;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +16,7 @@ public abstract class Fragment extends android.support.v4.app.Fragment {
     protected View mRoot;
     protected Unbinder mRootUnBinder;
     protected PlaceHolderView mPlaceHolderView;
+    protected boolean mIsFirstInitData = true;
 
     @Override
     public void onAttach(Context context) {
@@ -25,10 +25,9 @@ public abstract class Fragment extends android.support.v4.app.Fragment {
         initArgs(getArguments());
     }
 
-
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (mRoot == null) {
             int layId = getContentLayoutId();
             View root = inflater.inflate(layId, container, false);
@@ -43,9 +42,12 @@ public abstract class Fragment extends android.support.v4.app.Fragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        if (mIsFirstInitData) {
+            mIsFirstInitData = false;
+            onFirstInit();
+        }
         initData();
     }
 
@@ -65,12 +67,16 @@ public abstract class Fragment extends android.support.v4.app.Fragment {
 
     }
 
-    public boolean onBackPressed() {
+    protected void onFirstInit() {
 
+    }
+
+    public boolean onBackPressed() {
         return false;
     }
 
     public void setPlaceHolderView(PlaceHolderView placeHolderView) {
         this.mPlaceHolderView = placeHolderView;
     }
+
 }

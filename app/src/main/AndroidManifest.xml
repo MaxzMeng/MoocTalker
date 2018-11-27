@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="me.maxandroid.italker">
 
     <!-- 网络相关的权限 -->
@@ -26,22 +25,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!--&lt;!&ndash; 个推的广播注册 &ndash;&gt;-->
-        <!--<receiver-->
-            <!--android:name=".MessageReceiver"-->
-            <!--android:enabled="true"-->
-            <!--android:exported="true"-->
-            <!--android:permission="1000">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="com.igexin.sdk.action.${GETUI_APP_ID}" />-->
-            <!--</intent-filter>-->
-        <!--</receiver>-->
+        <!-- &lt;!&ndash; 个推的广播注册 &ndash;&gt; -->
+        <!-- <receiver -->
+        <!-- android:name=".MessageReceiver" -->
+        <!-- android:enabled="true" -->
+        <!-- android:exported="true" -->
+        <!-- android:permission="1000"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="com.igexin.sdk.action.${GETUI_APP_ID}" /> -->
+        <!-- </intent-filter> -->
+        <!-- </receiver> -->
 
         <activity
             android:name=".LaunchActivity"
             android:theme="@style/AppTheme.TransStatusBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -65,6 +65,16 @@
         <activity
             android:name=".activities.SearchActivity"
             android:label="@string/title_search"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.TransStatusBar" />
+        <activity
+            android:name=".activities.MessageActivity"
+            android:label="@string/title_activity_message"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.TransStatusBar" />
+        <activity
+            android:name=".activities.PersonalActivity"
+            android:label="@string/title_activity_personal"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.TransStatusBar" />
     </application>

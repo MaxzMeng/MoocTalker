@@ -1,7 +1,6 @@
 package me.maxandroid.italker.common.app;
 
 import android.os.Bundle;
-import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -9,17 +8,21 @@ import android.support.v7.app.AppCompatActivity;
 import java.util.List;
 
 import butterknife.ButterKnife;
+import me.maxandroid.italker.common.widget.convention.PlaceHolderView;
 
 public abstract class Activity extends AppCompatActivity {
+
+    protected PlaceHolderView mPlaceHolderView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        initWindows();
+        initWidows();
 
         if (initArgs(getIntent().getExtras())) {
-            setContentView(getContentLayoutId());
+            int layId = getContentLayoutId();
+            setContentView(layId);
+            initBefore();
             initWidget();
             initData();
         } else {
@@ -27,7 +30,11 @@ public abstract class Activity extends AppCompatActivity {
         }
     }
 
-    protected void initWindows() {
+    protected void initBefore() {
+
+    }
+
+    protected void initWidows() {
 
     }
 
@@ -35,16 +42,17 @@ public abstract class Activity extends AppCompatActivity {
         return true;
     }
 
-    @LayoutRes
     protected abstract int getContentLayoutId();
 
     protected void initWidget() {
         ButterKnife.bind(this);
     }
 
+
     protected void initData() {
 
     }
+
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -54,7 +62,7 @@ public abstract class Activity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        List<Fragment> fragments = getSupportFragmentManager().getFragments();
+        List<android.support.v4.app.Fragment> fragments = getSupportFragmentManager().getFragments();
         if (fragments.size() > 0) {
             for (Fragment fragment : fragments) {
                 if (fragment instanceof me.maxandroid.italker.common.app.Fragment) {
@@ -64,7 +72,12 @@ public abstract class Activity extends AppCompatActivity {
                 }
             }
         }
+
         super.onBackPressed();
         finish();
+    }
+
+    public void setPlaceHolderView(PlaceHolderView placeHolderView) {
+        this.mPlaceHolderView = placeHolderView;
     }
 }
