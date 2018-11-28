@@ -9,8 +9,8 @@ import net.qiujuer.genius.ui.widget.Loading;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import me.maxandroid.italker.activities.MainActivity;
 import me.maxandroid.italker.R;
+import me.maxandroid.italker.activities.MainActivity;
 import me.maxandroid.italker.common.app.PresenterFragment;
 import me.maxandroid.italker.factory.presenter.account.LoginContract;
 import me.maxandroid.italker.factory.presenter.account.LoginPresenter;

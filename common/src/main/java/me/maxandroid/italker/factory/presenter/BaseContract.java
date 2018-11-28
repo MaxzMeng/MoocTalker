@@ -19,8 +19,8 @@ public interface BaseContract {
         void destroy();
     }
 
-    interface RecyclerView<T extends Presenter, ViewMode> extends View<T> {
-        RecyclerAdapter<ViewMode> getRecyclerAdapter();
+    interface RecyclerView<T extends Presenter, ViewModel> extends View<T> {
+        RecyclerAdapter<ViewModel> getRecyclerAdapter();
 
         void onAdapterDataChanged();
     }

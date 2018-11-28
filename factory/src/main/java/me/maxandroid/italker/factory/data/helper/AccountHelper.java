@@ -56,7 +56,7 @@ public class AccountHelper {
             if (rspModel.success()) {
                 AccountRspModel accountRspModel = rspModel.getResult();
                 User user = accountRspModel.getUser();
-                user.save();
+                DbHelper.save(User.class, user);
                 Account.login(accountRspModel);
                 if (accountRspModel.isBind()) {
                     Account.setBind(true);

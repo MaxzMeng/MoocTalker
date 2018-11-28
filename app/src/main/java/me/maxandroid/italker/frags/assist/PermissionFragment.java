@@ -14,9 +14,9 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-import me.maxandroid.italker.activities.MainActivity;
 import me.maxandroid.italker.R;
 import me.maxandroid.italker.activities.AccountActivity;
+import me.maxandroid.italker.activities.MainActivity;
 import me.maxandroid.italker.common.app.Application;
 import me.maxandroid.italker.factory.persistence.Account;
 import me.maxandroid.italker.frags.media.GalleryFragment;

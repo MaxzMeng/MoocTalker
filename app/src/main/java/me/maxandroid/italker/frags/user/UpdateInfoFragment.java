@@ -19,8 +19,8 @@ import java.io.File;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import me.maxandroid.italker.activities.MainActivity;
 import me.maxandroid.italker.R;
+import me.maxandroid.italker.activities.MainActivity;
 import me.maxandroid.italker.common.app.Application;
 import me.maxandroid.italker.common.app.PresenterFragment;
 import me.maxandroid.italker.common.widget.PortraitView;

@@ -10,7 +10,7 @@ import me.maxandroid.italker.factory.model.card.GroupCard;
 import me.maxandroid.italker.factory.presenter.search.SearchContract;
 
 public class SearchGroupFragment extends PresenterFragment<SearchContract.Presenter>
-        implements SearchActivity.SearchFragment,SearchContract.GroupView {
+        implements SearchActivity.SearchFragment, SearchContract.GroupView {
 
 
     @Override

@@ -1,10 +1,8 @@
 package me.maxandroid.italker.frags.main;
 
 
-import butterknife.BindView;
-import me.maxandroid.italker.common.app.Fragment;
-import me.maxandroid.italker.common.widget.GalleryView;
 import me.maxandroid.italker.R;
+import me.maxandroid.italker.common.app.Fragment;
 
 public class ActiveFragment extends Fragment {
 

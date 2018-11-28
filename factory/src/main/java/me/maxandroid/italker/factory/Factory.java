@@ -12,6 +12,12 @@ import java.util.concurrent.Executors;
 
 import me.maxandroid.italker.common.app.Application;
 import me.maxandroid.italker.factory.data.DataSource;
+import me.maxandroid.italker.factory.data.group.GroupCenter;
+import me.maxandroid.italker.factory.data.group.GroupDispatcher;
+import me.maxandroid.italker.factory.data.message.MessageCenter;
+import me.maxandroid.italker.factory.data.message.MessageDispatcher;
+import me.maxandroid.italker.factory.data.user.UserCenter;
+import me.maxandroid.italker.factory.data.user.UserDispatcher;
 import me.maxandroid.italker.factory.model.api.RspModel;
 import me.maxandroid.italker.factory.persistence.Account;
 import me.maxandroid.italker.factory.utils.DBFlowExclusionStrategy;
@@ -172,4 +178,15 @@ public class Factory {
         // TODO
     }
 
+    public static UserCenter getUserCenter() {
+        return UserDispatcher.instance();
+    }
+
+    public static MessageCenter getMessageCenter() {
+        return MessageDispatcher.instance();
+    }
+
+    public static GroupCenter getGroupCenter() {
+        return GroupDispatcher.instance();
+    }
 }

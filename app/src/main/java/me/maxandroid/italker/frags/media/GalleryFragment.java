@@ -12,11 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 
-import net.qiujuer.genius.ui.Ui;
-
+import me.maxandroid.italker.R;
 import me.maxandroid.italker.common.tools.UiTool;
 import me.maxandroid.italker.common.widget.GalleryView;
-import me.maxandroid.italker.R;
 
 
 public class GalleryFragment extends BottomSheetDialogFragment
