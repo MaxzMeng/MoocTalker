@@ -10,25 +10,20 @@ import me.maxandroid.italker.factory.data.helper.UserHelper;
 import me.maxandroid.italker.factory.data.user.ContactDataSource;
 import me.maxandroid.italker.factory.data.user.ContactRepository;
 import me.maxandroid.italker.factory.model.db.User;
-import me.maxandroid.italker.factory.presenter.BaseRecyclerPresenter;
+import me.maxandroid.italker.factory.presenter.BaseSourcePresenter;
 import me.maxandroid.italker.factory.utils.DiffUiDataCallback;
 
-public class ContactPresenter extends BaseRecyclerPresenter<User, ContactContract.View>
+public class ContactPresenter extends BaseSourcePresenter<User, User, ContactDataSource, ContactContract.View>
         implements ContactContract.Presenter, DataSource.SucceedCallback<List<User>> {
 
-    private ContactDataSource mSource;
-
     public ContactPresenter(ContactContract.View view) {
-        super(view);
-        mSource = new ContactRepository();
+        super(new ContactRepository(), view);
     }
 
 
     @Override
     public void start() {
         super.start();
-        mSource.load(this);
-
         UserHelper.refreshContacts();
     }
 
@@ -47,9 +42,4 @@ public class ContactPresenter extends BaseRecyclerPresenter<User, ContactContrac
         refreshData(result, users);
     }
 
-    @Override
-    public void destroy() {
-        super.destroy();
-        mSource.dispose();
-    }
 }

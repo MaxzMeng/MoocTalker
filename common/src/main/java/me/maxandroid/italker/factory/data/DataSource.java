@@ -3,7 +3,7 @@ package me.maxandroid.italker.factory.data;
 import android.support.annotation.StringRes;
 
 public interface DataSource {
-    interface Callback<T> extends SucceedCallback<T>, FailedCallback<T> {
+    interface Callback<T> extends SucceedCallback<T>, FailedCallback {
 
     }
 
@@ -11,7 +11,9 @@ public interface DataSource {
         void onDataLoaded(T t);
     }
 
-    interface FailedCallback<T> {
+    interface FailedCallback {
         void onDataNotAvailable(@StringRes int strRes);
     }
+
+    void dispose();
 }
