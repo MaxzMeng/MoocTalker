@@ -10,6 +10,8 @@ import me.maxandroid.italker.common.app.Activity;
 import me.maxandroid.italker.common.app.Fragment;
 import me.maxandroid.italker.factory.model.Author;
 import me.maxandroid.italker.factory.model.db.Group;
+import me.maxandroid.italker.factory.model.db.Message;
+import me.maxandroid.italker.factory.model.db.Session;
 import me.maxandroid.italker.frags.message.ChatGroupFragment;
 import me.maxandroid.italker.frags.message.ChatUserFragment;
 
@@ -35,6 +37,15 @@ public class MessageActivity extends Activity {
         Intent intent = new Intent(context, MessageActivity.class);
         intent.putExtra(KEY_RECEIVER_ID, group.getId());
         intent.putExtra(KEY_RECEIVER_IS_GROUP, true);
+        context.startActivity(intent);
+    }
+
+    public static void show(Context context, Session session) {
+        if (session == null || context == null || TextUtils.isEmpty(session.getId()))
+            return;
+        Intent intent = new Intent(context, MessageActivity.class);
+        intent.putExtra(KEY_RECEIVER_ID, session.getId());
+        intent.putExtra(KEY_RECEIVER_IS_GROUP, session.getReceiverType() == Message.RECEIVER_TYPE_GROUP);
         context.startActivity(intent);
     }
 

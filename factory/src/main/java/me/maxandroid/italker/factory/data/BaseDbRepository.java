@@ -20,7 +20,7 @@ public abstract class BaseDbRepository<Data extends BaseDbModel<Data>>
         DbHelper.ChangedListener<Data>,
         QueryTransaction.QueryResultListCallback<Data> {
     private SucceedCallback<List<Data>> callback;
-    private final List<Data> dataList = new LinkedList<>();
+    protected final LinkedList<Data> dataList = new LinkedList<>();
     private Class<Data> dataClass;
 
     public BaseDbRepository() {
