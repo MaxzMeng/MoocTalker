@@ -6,7 +6,9 @@ import me.maxandroid.italker.factory.model.api.RspModel;
 import me.maxandroid.italker.factory.model.api.account.AccountRspModel;
 import me.maxandroid.italker.factory.model.api.account.LoginModel;
 import me.maxandroid.italker.factory.model.api.account.RegisterModel;
+import me.maxandroid.italker.factory.model.api.message.MsgCreateModel;
 import me.maxandroid.italker.factory.model.api.user.UserUpdateModel;
+import me.maxandroid.italker.factory.model.card.MessageCard;
 import me.maxandroid.italker.factory.model.card.UserCard;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -59,7 +61,12 @@ public interface RemoteService {
     @GET("user/contact")
     Call<RspModel<List<UserCard>>> userContacts();
 
-
+    // 查询某人的信息
     @GET("user/{userId}")
     Call<RspModel<UserCard>> userFind(@Path("userId") String userId);
+
+    // 发送消息的接口
+    @POST("msg")
+    Call<RspModel<MessageCard>> msgPush(@Body MsgCreateModel model);
+
 }
