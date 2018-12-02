@@ -13,4 +13,9 @@ public class GroupMemberAddModel {
     public void setUsers(Set<String> users) {
         this.users = users;
     }
+
+    public GroupMemberAddModel(Set<String> users) {
+        this.users = users;
+    }
+
 }

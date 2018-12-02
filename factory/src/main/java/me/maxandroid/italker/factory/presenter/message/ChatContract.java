@@ -1,8 +1,11 @@
 package me.maxandroid.italker.factory.presenter.message;
 
+import java.util.List;
+
 import me.maxandroid.italker.factory.model.db.Group;
 import me.maxandroid.italker.factory.model.db.Message;
 import me.maxandroid.italker.factory.model.db.User;
+import me.maxandroid.italker.factory.model.db.view.MemberUserModel;
 import me.maxandroid.italker.factory.presenter.BaseContract;
 
 public interface ChatContract {
@@ -31,8 +34,11 @@ public interface ChatContract {
 
     }
 
-    // 群聊天的界面
     interface GroupView extends View<Group> {
+        // 显示管理员菜单
+        void showAdminOption(boolean isAdmin);
 
+        // 初始化成员信息
+        void onInitGroupMembers(List<MemberUserModel> members, long moreCount);
     }
 }
