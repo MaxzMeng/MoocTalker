@@ -103,7 +103,7 @@ public class GalleryView extends RecyclerView {
         return paths;
     }
 
-    private void clear() {
+    public void clear() {
         for (Image image : mSelectedImages) {
             image.isSelected = false;
         }
